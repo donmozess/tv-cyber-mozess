@@ -1,5 +1,6 @@
 package com.m3u.tv
 
+import android.content.Context
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,6 +15,8 @@ import com.m3u.data.service.DPadReactionService
 import com.m3u.data.service.MediaCommand
 import com.m3u.data.service.PlayerManager
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -44,7 +47,8 @@ class TvHomeViewModel @Inject constructor(
     private val channelRepository: ChannelRepository,
     private val playerManager: PlayerManager,
     tvRepository: TvRepository,
-    dPadReactionService: DPadReactionService
+    dPadReactionService: DPadReactionService,
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
     private val _state = MutableStateFlow(TvUiState())
     val state: StateFlow<TvUiState> = _state.asStateFlow()
@@ -58,6 +62,7 @@ class TvHomeViewModel @Inject constructor(
     private var loadChannelsJob: Job? = null
 
     init {
+        loadDefaultPlaylist()
         observePlaylists()
         observeFavorites()
         observeRecent()
@@ -176,4 +181,31 @@ class TvHomeViewModel @Inject constructor(
 
     private fun Map<Playlist, Int>.countFor(url: String): Int? =
         entries.firstOrNull { it.key.url == url }?.value
+
+    private fun loadDefaultPlaylist() {
+        viewModelScope.launch {
+            try {
+                val prefs = context.getSharedPreferences("m3u_prefs", Context.MODE_PRIVATE)
+                if (prefs.getBoolean("default_playlist_loaded", false)) return@launch
+
+                val destFile = File(context.filesDir, "default_channels.m3u")
+                if (!destFile.exists()) {
+                    context.assets.open("default_channels.m3u").use { input ->
+                        destFile.outputStream().use { output ->
+                            input.copyTo(output)
+                        }
+                    }
+                }
+
+                playlistRepository.m3uOrThrow(
+                    title = "TV Cyber-Mozess 🇨🇮",
+                    url = "file://${destFile.absolutePath}"
+                )
+
+                prefs.edit().putBoolean("default_playlist_loaded", true).apply()
+            } catch (e: Exception) {
+                // silently fail - user can add playlists manually
+            }
+        }
+    }
 }
