@@ -9,7 +9,7 @@ application {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -39,7 +39,7 @@ tasks.register("startMockServer") {
         val logFile = mockServerLogFile.get().asFile
         logFile.parentFile.mkdirs()
         val launcher = javaToolchains.launcherFor {
-            languageVersion = JavaLanguageVersion.of(17)
+            languageVersion = JavaLanguageVersion.of(21)
         }.get()
         val port = providers.gradleProperty("m3uMockServerPort").orElse("8080").get()
         val host = providers.gradleProperty("m3uMockServerHost").orElse("0.0.0.0").get()
