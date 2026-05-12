@@ -1,85 +1,78 @@
-# M3UAndroid
+# TV Cyber-Mozess 📺
 
 <div align="center">
 
-[![GitHub release](https://img.shields.io/github/v/release/oxyroid/M3UAndroid)](https://github.com/oxyroid/M3UAndroid/releases)
 [![Android](https://img.shields.io/badge/Android-8.0%2B-brightgreen?logo=android)](https://developer.android.com)
-[![Telegram](https://img.shields.io/badge/Telegram-Channel-2CA5E0?logo=telegram)](https://t.me/m3u_android)
+[![Kotlin](https://img.shields.io/badge/Kotlin-100%25-7F52FF?logo=kotlin)](https://kotlinlang.org)
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue)](LICENSE)
+[![Telegram](https://img.shields.io/badge/Telegram-@cybermozess-2CA5E0?logo=telegram)](https://t.me/cybermozess)
 
-A modern IPTV streaming player built with Jetpack Compose for Android phones, tablets, and TV devices.
+**Application IPTV Android native pour Smartphones et TV Box — par Cyber-Mozess**
 
 </div>
 
-## Features
+## 📡 TV Cyber-Mozess
 
-- **Multi-Platform** - Optimized UI for smartphones, tablets, and Android TV
-- **DLNA Casting** - Stream to compatible devices on your network
-- **Smart Playback** - Advanced stream analysis and buffering
-- **Protocol Support** - M3U playlists and Xtream API compatibility
-- **Lightweight** - No ads, minimal permissions, efficient performance
-- **Multi-Language** - Support for 12+ languages
+Lecteur IPTV moderne construit avec Jetpack Compose, conçu pour :
+- 📱 **Smartphones Android**
+- 📺 **Android TV / TV Box**
+- 🔗 **Casting DLNA** vers les appareils compatibles
 
-## Screenshots
+**Basé sur [M3UAndroid](https://github.com/oxyroid/M3UAndroid)** — le meilleur lecteur IPTV open-source, adapté aux besoins de la communauté Cyber-Mozess.
 
-<table>
-<tr>
-<td width="50%">
+## ✨ Fonctionnalités
 
-**Mobile**
+- **Multi-Plateforme** - UI optimisée pour mobile et TV
+- **Playlists M3U** - Support complet des playlists M3U
+- **Xtream API** - Compatible avec les serveurs Xtream
+- **DLNA Casting** - Diffusez vers vos appareils réseau
+- **Sans Publicité** - 0 pubs, permissions minimales
+- **12+ Langues** - Interface multilingue
 
-<img src=".github/images/phone/deviceframes.png" alt="Mobile UI" />
+## 📥 Téléchargement
 
-</td>
-<td width="50%">
+Les APK sont générées automatiquement et livrées sur le canal Telegram [@cybermozess](https://t.me/cybermozess).
 
-**Android TV**
+| Plateforme | Type |
+|-----------|------|
+| 📱 Smartphone | `app-smartphone-release.apk` |
+| 📺 TV Box | `app-tv-release.apk` |
 
-<img src=".github/images/tv/playlist.png" alt="TV Playlist" />
-<img src=".github/images/tv/player.png" alt="TV Player" />
+## 🛠 Stack Technique
 
-</td>
-</tr>
-</table>
-
-## Download
-
-[![GitHub Release](https://img.shields.io/badge/GitHub-Latest_Release-181717?style=for-the-badge&logo=github)](https://github.com/oxyroid/M3UAndroid/releases/latest)
-[![F-Droid](https://img.shields.io/badge/F--Droid-Repository-1976D2?style=for-the-badge&logo=fdroid&logoColor=white)](https://f-droid.org/packages/com.m3u.androidApp)
-[![IzzyOnDroid](https://img.shields.io/badge/IzzyOnDroid-Repository-8A4182?style=for-the-badge)](https://apt.izzysoft.de/fdroid/index/apk/com.m3u.androidApp)
-
-**Nightly builds** available via [GitHub Actions artifacts](https://nightly.link/oxyroid/M3UAndroid/workflows/android/master/artifact.zip).
-
-## Tech Stack
-
-- **Language** - 100% Kotlin
-- **UI** - Jetpack Compose with Material Design 3
-- **Architecture** - MVVM with modular structure
-- **Async** - Kotlin Coroutines and Flow
-- **Database** - Room
+- **Langage** - 100% Kotlin
+- **UI** - Jetpack Compose + Material Design 3
+- **Architecture** - MVVM modulaire
+- **Async** - Kotlin Coroutines & Flow
+- **Base de données** - Room
 - **DI** - Hilt
-- **Media** - ExoPlayer with FFmpeg integration
+- **Média** - ExoPlayer + FFmpeg
 
-## Localization
+## 🌍 Langues
 
-Contributions welcome! Currently supporting:
+- 🇫🇷 Français · 🇬🇧 English · 🇨🇳 简体中文
+- 🇩🇪 Deutsch · 🇮🇩 Indonesia · 🇮🇹 Italiano
+- 🇧🇷 Português · 🇷🇴 Română · 🇪🇸 Español
+- 🇸🇪 Svenska · 🇹🇷 Türkçe
 
-- 🇬🇧 [English](i18n/src/main/res/values) · 🇨🇳 [简体中文](i18n/src/main/res/values-zh-rCN)
-- 🇫🇷 [Français](i18n/src/main/res/values-fr-rFR) · 🇩🇪 [Deutsch](i18n/src/main/res/values-de-rDE)
-- 🇮🇩 [Indonesia](i18n/src/main/res/values-id-rID) · 🇮🇹 [Italiano](i18n/src/main/res/values-it-rIT)
-- 🇧🇷 [Português (BR)](i18n/src/main/res/values-pt-rBR) · 🇷🇴 [Română](i18n/src/main/res/values-ro-rRO)
-- 🇪🇸 [Español](i18n/src/main/res/values-es-rES) · 🇸🇪 [Svenska](i18n/src/main/res/values-sv-rSE)
-- 🇹🇷 [Türkçe](i18n/src/main/res/values-tr-rTR)
+## 🏗 Développement
 
-## Contributing
+```bash
+# Cloner le repo
+git clone https://github.com/donmozess/tv-cyber-mozess.git
+cd tv-cyber-mozess
 
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+# Builder l'APK Smartphone
+./gradlew :app:smartphone:assembleRelease
 
-## Community
+# Builder l'APK TV
+./gradlew :app:tv:assembleRelease
+```
 
-- **Telegram Channel** - [t.me/m3u_android](https://t.me/m3u_android)
-- **Telegram Chat** - [t.me/m3u_android_chat](https://t.me/m3u_android_chat)
+## 📄 Licence
 
-## License
+GNU General Public License v3.0 — voir [LICENSE](LICENSE).
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE).
+---
+
+**Cyber-Mozess** · [cybermozess.com](https://cybermozess.com) · Développé avec ❤️ par Sanogo
