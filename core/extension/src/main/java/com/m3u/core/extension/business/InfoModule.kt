@@ -18,7 +18,7 @@ class InfoModule(
         return GetAppInfoResponse(
             app_id = "com.m3u.smartphone",
             app_version = "InfoModule",
-            app_name = "M3U",
+            app_name = "TV Cyber-Mozess",
             app_description = "Powerful Media Player",
             app_package_name = "com.m3u.smartphone"
         )
